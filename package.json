@@ -1,0 +1,15 @@
+{
+  "name": "slowsteps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "uvu test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "uvu": "0.5.3"
+  }
+}
