@@ -5,6 +5,7 @@ const assert = require("uvu/assert");
 
 const { piped } = require("./helper");
 const { isPiped } = require("..");
+const { src } = require("vinyl-fs");
 
 const assertPiped = (value, result) => assert.is(
   isPiped(value),
@@ -13,6 +14,7 @@ const assertPiped = (value, result) => assert.is(
 
 test("isPiped(), piped object", async () => {
   assertPiped(piped(), true);
+  assertPiped(src("*.js"), true);
 });
 
 test("isPiped(), wrong objects", async () => {
