@@ -20,7 +20,11 @@ test("series calls functions in sequence", async () => {
   };
 
   const sfn = series(a, b);
-  const ctx = {trace: [], howdeep: []};
+
+  const ctx = {
+    trace: [], howdeep: []
+  };
+
   await sfn(ctx);
   equal(ctx.trace, [before, after]);
   equal(ctx.howdeep, [0, 0]);
