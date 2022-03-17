@@ -10,15 +10,20 @@ const before = "before";
 const after = "after";
 
 test("series calls functions in sequence", async () => {
-  const a = async (ctx) => delay(30).then(() => ctx.trace.push(before));
+  const a = async (ctx) => delay(30).then(() => {
+    ctx.howdeep.push(ctx.depth);
+    ctx.trace.push(before)
+  });
   const b = async (ctx) => {
+    ctx.howdeep.push(ctx.depth);
     ctx.trace.push(after);
-  }
+  };
 
   const sfn = series(a, b);
-  const ctx = {trace: []};
+  const ctx = {trace: [], howdeep: []};
   await sfn(ctx);
   equal(ctx.trace, [before, after]);
+  equal(ctx.howdeep, [0, 0]);
 });
 
 test.run();
