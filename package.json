@@ -9,8 +9,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "uvu": "0.5.3",
+  "dependencies": {
     "vinyl-fs": "3.0.3"
+  },
+  "devDependencies": {
+    "uvu": "0.5.3"
   }
 }

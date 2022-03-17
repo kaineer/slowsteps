@@ -11,7 +11,9 @@ const after = "after";
 
 test("series calls functions in sequence", async () => {
   const a = async (ctx) => delay(30).then(() => ctx.trace.push(before));
-  const b = async (ctx) => ctx.trace.push(after);
+  const b = async (ctx) => {
+    ctx.trace.push(after);
+  }
 
   const sfn = series(a, b);
   const ctx = {trace: []};
