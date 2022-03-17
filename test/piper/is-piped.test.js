@@ -1,20 +1,20 @@
-// test/helper.test.js
+// test/is-piped.test.js
 
 const { test } = require("uvu");
-const assert = require("uvu/assert");
+const { is } = require("uvu/assert");
 
-const { piped } = require("./helper");
-const { isPiped } = require("..");
+const { piped } = require("../helper");
+const { isPiped } = require("../../lib/piper");
 const { src } = require("vinyl-fs");
 
-const assertPiped = (value, result) => assert.is(
+const assertPiped = (value, result = true) => is(
   isPiped(value),
   result
 );
 
 test("isPiped(), piped object", async () => {
-  assertPiped(piped(), true);
-  assertPiped(src("*.js"), true);
+  assertPiped(piped());
+  assertPiped(src("*.js"));
 });
 
 test("isPiped(), wrong objects", async () => {

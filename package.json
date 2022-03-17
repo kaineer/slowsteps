@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "uvu": "uvu test"
+    "uvu": "uvu test test.js"
   },
   "keywords": [],
   "author": "",
