@@ -17,10 +17,10 @@ test("value()", async () => {
 
 test("piped()", async () => {
   const obj = piped();
-  assert.is(typeof obj, "object");
-  assert.is(typeof obj.pipe, "function");
-  assert.is(typeof obj.on, "function");
-  assert.is(typeof obj.end, "function");
+  assert.type(obj, "object");
+  assert.type(obj.pipe, "function");
+  assert.type(obj.on, "function");
+  assert.type(obj.end, "function");
 });
 
 test.run();
