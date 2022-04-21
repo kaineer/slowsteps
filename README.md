@@ -2,6 +2,8 @@ Plan
 ====
 
 ## Todo
+ * Fix output for actions without description
+ * Add wrapper for beforeCall->run function->afterCall chain
  * Looks like those actions should be done via another package
    * Add describing system (task id and task description)
    * Add debugging system

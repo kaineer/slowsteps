@@ -4,6 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
+    "test": "npm run uvu",
     "uvu": "uvu test test.js"
   },
   "keywords": [],
