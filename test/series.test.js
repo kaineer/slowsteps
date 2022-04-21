@@ -22,7 +22,11 @@ test("series calls functions in sequence", async () => {
   const sfn = series(a, b);
 
   const ctx = {
-    trace: [], howdeep: []
+    trace: [], howdeep: [],
+    beforeCall(ctx) {
+      ctx.depth = typeof ctx.depth === "undefined" ? 0 : ctx.depth + 1
+    },
+    afterCall(ctx) { ctx.depth--; }
   };
 
   await sfn(ctx);
