@@ -18,6 +18,9 @@ test("value()", async () => {
 test("piped()", async () => {
   const obj = piped();
   assert.is(typeof obj, "object");
+  assert.is(typeof obj.pipe, "function");
+  assert.is(typeof obj.on, "function");
+  assert.is(typeof obj.end, "function");
 });
 
 test.run();
