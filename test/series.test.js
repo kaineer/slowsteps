@@ -1,7 +1,7 @@
 // test/series.test.js
 
 const { test } = require("uvu");
-const { equal } = require("uvu/assert");
+const { equal, ok } = require("uvu/assert");
 const { delay } = require("./helper");
 
 const { series } = require("..");
@@ -32,6 +32,31 @@ test("series calls functions in sequence", async () => {
   await sfn(ctx);
   equal(ctx.trace, [before, after]);
   equal(ctx.howdeep, [0, 0]);
+});
+
+test("series will not call second function when first fails", async () => {
+  const a = async (ctx) => {
+    ctx.trace.push(before)
+    throw new Error();
+  };
+  const b = async (ctx) => {
+    ctx.trace.push(after);
+  };
+
+  const sfn = series(a, b);
+
+  const ctx = {
+    trace: [],
+  };
+
+  try {
+    await sfn(ctx);
+    ok(false); // sfn should throw an exception
+  } catch (err) {
+    //
+  }
+
+  equal(ctx.trace, [before]);
 });
 
 test.run();
