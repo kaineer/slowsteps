@@ -7,22 +7,22 @@ const { piped } = require("../helper");
 const { isPiped } = require("../../lib/piper");
 const { src } = require("vinyl-fs");
 
-const assertPiped = (value, result = true) => is(
+const assertIsPiped = (value, result = true) => is(
   isPiped(value),
   result
 );
 
 test("isPiped(), piped object", async () => {
-  assertPiped(piped());
-  assertPiped(src("*.js"));
+  assertIsPiped(piped());
+  assertIsPiped(src("*.js"));
 });
 
 test("isPiped(), wrong objects", async () => {
-  assertPiped({}, false);
-  assertPiped([], false);
-  assertPiped(42, false);
-  assertPiped(false, false);
-  assertPiped(Promise.resolve(), false);
+  assertIsPiped({}, false);
+  assertIsPiped([], false);
+  assertIsPiped(42, false);
+  assertIsPiped(false, false);
+  assertIsPiped(Promise.resolve(), false);
 });
 
 test.run();
